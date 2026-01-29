@@ -1,0 +1,3 @@
+Model + Optimizer: 4 × num_params × 4Bytes
+Logits/Softmax: batch_size × context_length × vocab_size × 4Bytes
+Loss Intermediates: 3 × batch_size × context_length × 4Bytes

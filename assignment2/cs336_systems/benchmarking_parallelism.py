@@ -7,12 +7,23 @@ import time
 def setup_gloo(rank, world_size):
     os.environ["MASTER_ADDR"] = "localhost"
     os.environ["MASTER_PORT"] = "29500"
-    dist.init_process_group("gloo", rank=rank, world_size=world_size)
+    dist.init_process_group(
+        "gloo", 
+        rank=rank, 
+        world_size=world_size)
 
 def setup_nccl(rank, world_size):
     os.environ["MASTER_ADDR"] = "localhost"
     os.environ["MASTER_PORT"] = "29500"
-    dist.init_process_group("nccl", rank=rank, world_size=world_size)
+    # Set CUDA device for each process using LOCAL_RANK or rank
+    # local_rank = int(os.environ.get("LOCAL_RANK", rank))
+    # torch.cuda.set_device(local_rank)
+    dist.init_process_group(
+        "nccl",
+        rank=rank,
+        world_size=world_size,
+        device_id=torch.device(f"cuda:{rank}"),
+    )
 
 def benchmark_all_reduce_gloo(rank, world_size, data_size):
     setup_gloo(rank, world_size)
@@ -29,15 +40,15 @@ def benchmark_all_reduce_gloo(rank, world_size, data_size):
     all_times = [None for _ in range(world_size)]
     dist.all_gather_object(all_times, elapsed)
     if rank == 0:
-        avg_time = sum(all_times) / len(all_times)
-        print(f"Average all-reduce time for {data_size / (2**20):.1f} MB with {world_size} processes: {avg_time:.4f} seconds")
+        avg_time = sum(all_times*1000) / len(all_times)
+        print(f"Average all-reduce time for {data_size / (2**20):.1f} MB with {world_size} processes: {avg_time:.4f} ms")
     dist.destroy_process_group()
 
 def benchmark_all_reduce_nccl(rank, world_size, data_size):
     setup_nccl(rank, world_size)
-    torch.cuda.set_device(rank)
     num_elements = data_size // 4
     data = torch.randn(num_elements, dtype=torch.float32, device='cuda')
+    print(num_elements)
     dist.barrier()
     start = time.time()
     dist.all_reduce(data, async_op=False)
@@ -48,8 +59,8 @@ def benchmark_all_reduce_nccl(rank, world_size, data_size):
     all_times = [None for _ in range(world_size)]
     dist.all_gather_object(all_times, elapsed)
     if rank == 0:
-        avg_time = sum(all_times) / len(all_times)
-        print(f"Average all-reduce time for {data_size / (2**20):.1f} MB with {world_size} processes: {avg_time:.4f} seconds")
+        avg_time = sum(all_times*1000) / len(all_times)
+        print(f"Average all-reduce time for {data_size / (2**20):.1f} MB with {world_size} processes: {avg_time:.4f} ms")
     dist.destroy_process_group()
 
 if __name__ == "__main__":

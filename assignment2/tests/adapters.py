@@ -6,6 +6,9 @@ import torch
 
 from cs336_systems.flash_attention import flash_attention_pytorch
 from cs336_systems.flash_attention import flash_attention_triton
+from cs336_systems.ddp_overlap import ddp_individual_parameters
+from cs336_systems.ddp_overlap import ddp_overlap_bucketed
+from cs336_systems.optimizer_state_sharding import shardedOptimizer
 
 def get_flashattention_autograd_function_pytorch() -> Type:
     """
@@ -55,7 +58,7 @@ def get_ddp_individual_parameters(module: torch.nn.Module) -> torch.nn.Module:
         Instance of a DDP class.
     """
     # For example: return DDPIndividualParameters(module)
-    raise NotImplementedError
+    return ddp_individual_parameters(module)
 
 
 def ddp_individual_parameters_on_after_backward(ddp_model: torch.nn.Module, optimizer: torch.optim.Optimizer):
@@ -70,8 +73,7 @@ def ddp_individual_parameters_on_after_backward(ddp_model: torch.nn.Module, opti
             Optimizer being used with the DDP-wrapped model.
     """
     # For example: ddp_model.finish_gradient_synchronization()
-    raise NotImplementedError
-
+    ddp_model.finish_gradient_synchronization()
 
 def get_ddp_bucketed(module: torch.nn.Module, bucket_size_mb: float) -> torch.nn.Module:
     """
@@ -91,8 +93,7 @@ def get_ddp_bucketed(module: torch.nn.Module, bucket_size_mb: float) -> torch.nn
     Returns:
         Instance of a DDP class.
     """
-    raise NotImplementedError
-
+    return ddp_overlap_bucketed(module, bucket_size_mb)
 
 def ddp_bucketed_on_after_backward(ddp_model: torch.nn.Module, optimizer: torch.optim.Optimizer):
     """
@@ -106,7 +107,7 @@ def ddp_bucketed_on_after_backward(ddp_model: torch.nn.Module, optimizer: torch.
             Optimizer being used with the DDP-wrapped model.
     """
     # For example: ddp_model.finish_gradient_synchronization()
-    raise NotImplementedError
+    ddp_model.finish_gradient_synchronization()
 
 
 def ddp_bucketed_on_train_batch_start(ddp_model: torch.nn.Module, optimizer: torch.optim.Optimizer):
@@ -119,8 +120,8 @@ def ddp_bucketed_on_train_batch_start(ddp_model: torch.nn.Module, optimizer: tor
         optimizer: torch.optim.Optimizer
             Optimizer being used with the DDP-wrapped model.
     """
-    raise NotImplementedError
-
+    # raise NotImplementedError
+    ddp_model.reset_bucket_state()
 
 def get_sharded_optimizer(params, optimizer_cls: Type[torch.optim.Optimizer], **kwargs) -> torch.optim.Optimizer:
     """
@@ -138,4 +139,5 @@ def get_sharded_optimizer(params, optimizer_cls: Type[torch.optim.Optimizer], **
     Returns:
         Instance of sharded optimizer.
     """
-    raise NotImplementedError
+    # raise ImportError
+    return shardedOptimizer(params=params, optimizer_cls=optimizer_cls, **kwargs)

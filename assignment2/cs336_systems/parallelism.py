@@ -1,21 +1,22 @@
-import os
 import torch
-import torch.distributed as dist
-import torch.multiprocessing as mp
+from cs336_basics.model import transformer_lm
 
-def setup(rank, world_size):
-    os.environ["MASTER_ADDR"] = "localhost"
-    os.environ["MASTER_PORT"] = "29500"
-    dist.init_process_group("gloo", rank=rank, world_size=world_size)
+model = transformer_lm(
+    vocab_size=128,
+    context_length=256,
+    d_model=64,
+    num_layers=4,
+    num_heads=4,
+    d_ff=128,
+    rope_theta=10000
+)
 
-def distributed_demo(rank, world_size, data_size):
-    setup(rank, world_size)
-    num_elements = data_size // 4
-    data = torch.randint(0, 10, (num_elements,))
-    # print(f"rank {rank} data (before all-reduce): {data}")
-    dist.all_reduce(data, async_op=False)
-    # print(f"rank {rank} data (after all-reduce): {data}")
+weights = list(model.parameters())
+for idx,p in enumerate(weights):
+    temp_p = p
+    new_tensor = torch.full_like(temp_p, fill_value=12568.0, device=temp_p.device, requires_grad=temp_p.requires_grad)
+    with torch.no_grad():
+        temp_p.copy_(new_tensor)
 
-if __name__ == "__main__":
-    world_size = 4
-    mp.spawn(fn=distributed_demo, args=(world_size,1 * (2**20)), nprocs=world_size, join=True)
+for idx,p in enumerate(weights):
+    print(p)

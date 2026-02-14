@@ -146,7 +146,7 @@ class multihead_self_attention(nn.Module):
             self.RoPE = RoPE(theta=theta, d_k=d_head, max_seq_len=max_seq_len, device=device)
         else:
             self.RoPE = None
-        self.mask = torch.tril(torch.ones((max_seq_len, max_seq_len), dtype=torch.bool, device=device))
+        self.register_buffer("mask", torch.tril(torch.ones((max_seq_len, max_seq_len), dtype=torch.bool, device=device)),)
         # Initialize weights with truncated normal distribution
         mean = 0.0
         std = (2 / (d_model + d_model)) ** 0.5

@@ -2,6 +2,7 @@ import os
 from typing import BinaryIO
 import numpy as np
 #===========================================
+from filepath import *
 from cs336_basics.run_scripts.filepath import *
 from cs336_basics.tokenizer import tokenizer
 #===========================================
@@ -67,10 +68,15 @@ def pre_tokenization(input_path, output_path, tokenizer: tokenizer, num_processe
             arr.tofile(out_f)  # Write directly to output file in binary format
     return True
 
+# TinyStories
+assert_datasets_exist([TS_VOCAB_PATH, TS_MERGES_PATH, TS_TRAIN_PATH, TS_VALID_PATH])
 TS_tokenizer = tokenizer.from_files(vocab_filepath=TS_VOCAB_PATH, merges_filepath=TS_MERGES_PATH, special_tokens=SPECIAL_TOKENS)
-OWT_tokenizer = tokenizer.from_files(vocab_filepath=OWT_VOCAB_PATH, merges_filepath=OWT_MERGES_PATH, special_tokens=SPECIAL_TOKENS)
-
 pre_tokenization(input_path=TS_TRAIN_PATH, output_path=TS_TRAIN_IDS_PATH, tokenizer=TS_tokenizer, num_processes=3)
 pre_tokenization(input_path=TS_VALID_PATH, output_path=TS_VALID_IDS_PATH, tokenizer=TS_tokenizer, num_processes=1)
-pre_tokenization(input_path=OWT_TRAIN_PATH, output_path=OWT_TRAIN_IDS_PATH, tokenizer=OWT_tokenizer, num_processes=15)
-pre_tokenization(input_path=OWT_VALID_PATH, output_path=OWT_VALID_IDS_PATH, tokenizer=OWT_tokenizer, num_processes=1)
+print('Tiny Stories get tokenized into IDS')
+
+# # OWT
+# OWT_tokenizer = tokenizer.from_files(vocab_filepath=OWT_VOCAB_PATH, merges_filepath=OWT_MERGES_PATH, special_tokens=SPECIAL_TOKENS)
+# pre_tokenization(input_path=OWT_TRAIN_PATH, output_path=OWT_TRAIN_IDS_PATH, tokenizer=OWT_tokenizer, num_processes=15)
+# pre_tokenization(input_path=OWT_VALID_PATH, output_path=OWT_VALID_IDS_PATH, tokenizer=OWT_tokenizer, num_processes=1)
+# print('OWT get tokenized into IDS')

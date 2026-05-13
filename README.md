@@ -74,4 +74,4 @@ After training, the model generates coherent stories from TinyStories. Here are 
 *Prompt: "There was a little boy named Tom"*
 
 ![TinyStories Generation 2](assets/tiny_story_inference_01.png)
-*Prompt: "Once upon a time, there was a little cat"
+*Prompt: "Once upon a time, there was a little cat"*

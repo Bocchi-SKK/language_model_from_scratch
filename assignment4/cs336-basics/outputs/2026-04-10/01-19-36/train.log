@@ -1,0 +1,55 @@
+[2026-04-10 01:19:40,250][cs336_basics.model][INFO] - number of non-embedding parameters: 84.95M
+[2026-04-10 01:19:40,257][__main__][INFO] - Total number of tokens per training step: 24576
+[2026-04-10 01:19:40,664][__main__][INFO] - Saving model config to /mnt/d/Data/CS336/assignment4/model/model_config.json
+[2026-04-10 01:19:40,673][__main__][INFO] - Using dtype: torch.bfloat16
+[2026-04-10 01:29:28,534][__main__][INFO] - Estimated validation loss: 4.871779441833496
+[2026-04-10 01:36:37,832][__main__][INFO] - Estimated validation loss: 4.5618414878845215
+[2026-04-10 01:43:43,478][__main__][INFO] - Estimated validation loss: 4.417378902435303
+[2026-04-10 01:50:48,867][__main__][INFO] - Estimated validation loss: 4.342087268829346
+[2026-04-10 01:57:58,022][__main__][INFO] - Estimated validation loss: 4.290682792663574
+[2026-04-10 02:05:06,252][__main__][INFO] - Estimated validation loss: 4.2466301918029785
+[2026-04-10 02:12:11,179][__main__][INFO] - Estimated validation loss: 4.220892906188965
+[2026-04-10 02:19:17,761][__main__][INFO] - Estimated validation loss: 4.19851541519165
+[2026-04-10 02:26:24,582][__main__][INFO] - Estimated validation loss: 4.176957607269287
+[2026-04-10 02:33:30,663][__main__][INFO] - Estimated validation loss: 4.160621643066406
+[2026-04-10 02:40:37,902][__main__][INFO] - Estimated validation loss: 4.14633321762085
+[2026-04-10 02:47:45,793][__main__][INFO] - Estimated validation loss: 4.121894836425781
+[2026-04-10 02:54:49,356][__main__][INFO] - Estimated validation loss: 4.116757392883301
+[2026-04-10 03:01:55,127][__main__][INFO] - Estimated validation loss: 4.102877140045166
+[2026-04-10 03:09:01,398][__main__][INFO] - Estimated validation loss: 4.097031593322754
+[2026-04-10 03:16:08,122][__main__][INFO] - Estimated validation loss: 4.091262340545654
+[2026-04-10 03:23:11,219][__main__][INFO] - Estimated validation loss: 4.082277774810791
+[2026-04-10 03:30:17,008][__main__][INFO] - Estimated validation loss: 4.0650835037231445
+[2026-04-10 03:37:22,772][__main__][INFO] - Estimated validation loss: 4.053253173828125
+[2026-04-10 03:44:28,491][__main__][INFO] - Estimated validation loss: 4.045872688293457
+[2026-04-10 03:51:35,378][__main__][INFO] - Estimated validation loss: 4.031661033630371
+[2026-04-10 03:58:42,643][__main__][INFO] - Estimated validation loss: 4.025398254394531
+[2026-04-10 04:05:49,560][__main__][INFO] - Estimated validation loss: 4.011960506439209
+[2026-04-10 04:12:58,621][__main__][INFO] - Estimated validation loss: 3.994194984436035
+[2026-04-10 04:20:10,378][__main__][INFO] - Estimated validation loss: 3.9959664344787598
+[2026-04-10 04:27:19,643][__main__][INFO] - Estimated validation loss: 3.9825572967529297
+[2026-04-10 04:34:32,011][__main__][INFO] - Estimated validation loss: 3.9711599349975586
+[2026-04-10 04:41:40,827][__main__][INFO] - Estimated validation loss: 3.9514338970184326
+[2026-04-10 04:48:44,098][__main__][INFO] - Estimated validation loss: 3.943394660949707
+[2026-04-10 04:55:50,254][__main__][INFO] - Estimated validation loss: 3.935697078704834
+[2026-04-10 05:02:56,589][__main__][INFO] - Estimated validation loss: 3.9205167293548584
+[2026-04-10 05:10:02,132][__main__][INFO] - Estimated validation loss: 3.9138388633728027
+[2026-04-10 05:17:09,368][__main__][INFO] - Estimated validation loss: 3.8976969718933105
+[2026-04-10 05:24:13,028][__main__][INFO] - Estimated validation loss: 3.8866355419158936
+[2026-04-10 05:31:18,469][__main__][INFO] - Estimated validation loss: 3.869685411453247
+[2026-04-10 05:38:24,168][__main__][INFO] - Estimated validation loss: 3.8663482666015625
+[2026-04-10 05:45:33,167][__main__][INFO] - Estimated validation loss: 3.8559606075286865
+[2026-04-10 05:52:46,063][__main__][INFO] - Estimated validation loss: 3.8393146991729736
+[2026-04-10 05:59:56,811][__main__][INFO] - Estimated validation loss: 3.8384299278259277
+[2026-04-10 06:07:06,253][__main__][INFO] - Estimated validation loss: 3.8215491771698
+[2026-04-10 06:14:18,046][__main__][INFO] - Estimated validation loss: 3.8093392848968506
+[2026-04-10 06:21:30,581][__main__][INFO] - Estimated validation loss: 3.7969958782196045
+[2026-04-10 06:28:42,041][__main__][INFO] - Estimated validation loss: 3.788195848464966
+[2026-04-10 06:35:54,003][__main__][INFO] - Estimated validation loss: 3.7799630165100098
+[2026-04-10 06:43:03,448][__main__][INFO] - Estimated validation loss: 3.783200263977051
+[2026-04-10 06:50:14,804][__main__][INFO] - Estimated validation loss: 3.7667508125305176
+[2026-04-10 06:57:21,188][__main__][INFO] - Estimated validation loss: 3.766193151473999
+[2026-04-10 07:04:30,523][__main__][INFO] - Estimated validation loss: 3.761042356491089
+[2026-04-10 07:11:39,857][__main__][INFO] - Estimated validation loss: 3.7563767433166504
+[2026-04-10 07:18:49,938][__main__][INFO] - Final estimated validation loss: 3.7588393688201904
+[2026-04-10 07:18:49,939][__main__][INFO] - Saving model weights to /mnt/d/Data/CS336/assignment4/model/model.pt

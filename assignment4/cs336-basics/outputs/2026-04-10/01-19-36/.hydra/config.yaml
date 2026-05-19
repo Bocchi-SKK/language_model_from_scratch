@@ -1,0 +1,7 @@
+paths:
+  train_bin: /mnt/d/Data/CS336/assignment4/cc_gpt2_tokens_train.bin
+  valid_bin: /mnt/d/Data/CS336/assignment4/c4_validation_gpt2_tokens.bin
+  model_output: /mnt/d/Data/CS336/assignment4/model
+training:
+  wandb_entity: null
+  wandb_project: null

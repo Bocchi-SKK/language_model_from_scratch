@@ -1,0 +1,16 @@
+<<<<<<< HEAD
+source ~/myenv/bin/activate
+cd /mnt/e/Data/OneDrive/Data/Code/Python/Language_Modeling_From_Scratch/assignment2
+
+uv run pytest tests/test_attention.py
+uv run pytest tests/test_ddp_individual_parameters.py
+uv run pytest tests/test_ddp.py
+=======
+source ~/myenv/bin/activate
+cd /mnt/e/Data/OneDrive/Data/Code/Python/Language_Modeling_From_Scratch/assignment2
+
+uv run pytest tests/test_attention.py
+uv run pytest tests/test_ddp_individual_parameters.py
+uv run pytest tests/test_ddp.py
+>>>>>>> d279b46 (Initial commit: Complete Language Modeling From Scratch implementation with Assignments 1-5)
+uv run pytest tests/test_sharded_optimizer.py

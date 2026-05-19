@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+Model + Optimizer: 4 × num_params × 4Bytes
+Logits/Softmax: batch_size × context_length × vocab_size × 4Bytes
+=======
+Model + Optimizer: 4 × num_params × 4Bytes
+Logits/Softmax: batch_size × context_length × vocab_size × 4Bytes
+>>>>>>> d279b46 (Initial commit: Complete Language Modeling From Scratch implementation with Assignments 1-5)
+Loss Intermediates: 3 × batch_size × context_length × 4Bytes

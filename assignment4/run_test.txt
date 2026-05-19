@@ -1,0 +1,24 @@
+<<<<<<< HEAD
+source ~/myenv/bin/activate
+cd /mnt/e/Data/OneDrive/Data/Code/Python/Language_Modeling_From_Scratch/assignment4
+
+uv run pytest tests/test_extract.py
+uv run pytest tests/test_langid.py
+uv run pytest tests/test_pii.py
+uv run pytest tests/test_toxicity.py
+uv run pytest tests/test_quality.py
+uv run pytest tests/test_deduplication.py
+
+=======
+source ~/myenv/bin/activate
+cd /mnt/e/Data/OneDrive/Data/Code/Python/Language_Modeling_From_Scratch/assignment4
+
+uv run pytest tests/test_extract.py
+uv run pytest tests/test_langid.py
+uv run pytest tests/test_pii.py
+uv run pytest tests/test_toxicity.py
+uv run pytest tests/test_quality.py
+uv run pytest tests/test_deduplication.py
+
+>>>>>>> d279b46 (Initial commit: Complete Language Modeling From Scratch implementation with Assignments 1-5)
+uv run --directory cs336-basics python scripts/train.py --config-name=experiment/your_data training.wandb_entity=null training.wandb_project=null
